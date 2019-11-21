@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MyClass {
+public class DeletionTest {
     public static void main(String args[]) {
         Integer[] a = new Integer[5];
         for(int i = 0; i < 5; i++) a[i] = i;
