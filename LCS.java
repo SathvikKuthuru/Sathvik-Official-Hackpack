@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LIS {
+public class LCS {
     public static void main(String args[]) {
         Scanner scan = new Scanner(System.in);
         int m = scan.nextInt(), n = scan.nextInt();
@@ -14,3 +14,5 @@ public class LIS {
             }
         }
         System.out.println(dp[m][n]);
+    }
+}
