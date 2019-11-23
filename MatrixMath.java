@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MyClass {
+public class MatrixTest {
         /*
         Problem: Find number of ways to get sum N using dice rolls (use only numbers 1 - 6).
          */
