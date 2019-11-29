@@ -1,5 +1,3 @@
-//Created by Sathvik Kuthuru (Let me know if there are any bugs)
-
 public class RBTest {
 
     public static void main(String[] args) {
@@ -20,7 +18,7 @@ public class RBTest {
     static class RedBlackSet<T extends Comparable<T>> {
         static final boolean BLACK = false;
         static final boolean RED = true;
-        RedBlackSetNode<T> root;
+        Node root;
 
         public RedBlackSet() {
             root = null;
@@ -30,25 +28,25 @@ public class RBTest {
             printHelper(root);
         }
 
-        public void printHelper(RedBlackSetNode<T> curr) {
+        public void printHelper(Node curr) {
             if(curr.left != null) printHelper(curr.left);
             System.out.println(curr);
             if(curr.right != null) printHelper(curr.right);
         }
 
         public void add(T val) {
-            RedBlackSetNode toInsert = new RedBlackSetNode(null, val);
+            Node toInsert = new Node(null, val);
             root = insertionHelper(root, toInsert);
             balance(toInsert);
         }
 
-        public void recolor(RedBlackSetNode<T> parent, RedBlackSetNode<T> uncle, RedBlackSetNode<T> grandparent) {
+        public void recolor(Node parent, Node uncle, Node grandparent) {
             parent.color = BLACK;
             uncle.color = BLACK;
             grandparent.color = RED;
         }
 
-        public void rotate(RedBlackSetNode<T> curr, RedBlackSetNode<T> parent, RedBlackSetNode<T> grandparent) {
+        public void rotate(Node curr, Node parent, Node grandparent) {
             if(parent == grandparent.left) {
                 if(curr == parent.left) rotateLL(parent, grandparent);
                 else rotateLR(curr, parent, grandparent);
@@ -59,7 +57,7 @@ public class RBTest {
             }
         }
 
-        public void rotateLL(RedBlackSetNode<T> parent, RedBlackSetNode<T> grandparent) {
+        public void rotateLL(Node parent, Node grandparent) {
             grandparent.left = parent.right;
             parent.parent = grandparent.parent;
             parent.right = grandparent;
@@ -72,7 +70,7 @@ public class RBTest {
             grandparent.color = parent.color;
             parent.color = tempColor;
         }
-        public void rotateLR(RedBlackSetNode<T> curr, RedBlackSetNode<T> parent, RedBlackSetNode<T> grandparent) {
+        public void rotateLR(Node curr, Node parent, Node grandparent) {
             curr.parent = grandparent;
             grandparent.left = curr;
             parent.right = curr.left;
@@ -81,7 +79,7 @@ public class RBTest {
             rotateLL(curr, grandparent);
         }
 
-        public void rotateRR(RedBlackSetNode<T> parent, RedBlackSetNode<T> grandparent) {
+        public void rotateRR(Node parent, Node grandparent) {
             grandparent.right = parent.left;
             parent.parent = grandparent.parent;
             parent.left = grandparent;
@@ -95,7 +93,7 @@ public class RBTest {
             parent.color = tempColor;
         }
 
-        public void rotateRL(RedBlackSetNode<T> curr, RedBlackSetNode<T> parent, RedBlackSetNode<T> grandparent) {
+        public void rotateRL(Node curr, Node parent, Node grandparent) {
             curr.parent = grandparent;
             grandparent.right = curr;
             parent.left = curr.right;
@@ -105,13 +103,13 @@ public class RBTest {
         }
 
 
-        public void balance(RedBlackSetNode<T> curr) {
+        public void balance(Node curr) {
             if(curr == root) curr.color = RedBlackSet.BLACK;
             else {
-                RedBlackSetNode<T> parent = curr.parent;
+                Node parent = curr.parent;
                 if(parent.color == BLACK) return;
-                RedBlackSetNode<T> grandparent = parent.parent;
-                RedBlackSetNode<T> uncle = null;
+                Node grandparent = parent.parent;
+                Node uncle = null;
                 if(grandparent != null) {
                     uncle = grandparent.left == parent ? grandparent.right : grandparent.left;
                 }
@@ -125,7 +123,7 @@ public class RBTest {
             }
         }
 
-        public RedBlackSetNode<T> insertionHelper(RedBlackSetNode<T> curr, RedBlackSetNode<T> toInsert) {
+        public Node insertionHelper(Node curr, Node toInsert) {
             if(curr == null) return toInsert;
             else {
                 if(toInsert.data.compareTo(curr.data) == -1) {
@@ -140,12 +138,12 @@ public class RBTest {
             return curr;
         }
 
-        static class RedBlackSetNode<T> {
+        class Node {
             boolean color;
-            RedBlackSetNode<T> left, right, parent;
+            Node left, right, parent;
             T data;
 
-            public RedBlackSetNode(RedBlackSetNode<T> parent, T input) {
+            public Node(Node parent, T input) {
                 this.parent = parent;
                 this.left = null;
                 this.right = null;
