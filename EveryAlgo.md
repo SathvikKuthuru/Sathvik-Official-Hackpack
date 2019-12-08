@@ -1,0 +1,106 @@
+Breadth First Search
+Depth First Search
+Rolling Hash
+Z Algorithm
+Knuth-Morris-Pratt
+Rabin Karp
+Segment Tree
+-Merge Sort Tree
+-Persistent Segment Tree
+-Lazy Propagation
+Binary Indexed Tree/Fenwick Tree
+Trie
+Shortest Path
+-Bellman-Ford
+-Floyd-Warshall
+-SPFA
+-Dijkstra
+Dynamic Programming
+-Bitmask
+-Broken Profile/Frontier
+-Digit DP
+-Convex Hull Trick
+-Common: LCS, LIS, Min Edit Distance, Min Partition, Subset-sum, knapsack
+Biconnected Components
+Strongly Connected Components
+Guassian Elimination
+Topological Sort
+Suffix Automation
+Suffix Tree/Aho-Corasick
+Palindromic Tree
+Centroid Decomposition
+Heavy-Light Decomposition
+Max Flow
+-Min Cut
+-Ford-Fulkerson
+-Edmonds-Karp
+-Dinic
+-Push Relabel
+Convex Hull
+Catalan
+Disjoin Set Union
+Prim's Algorithm
+Kruskal
+Binary Search
+Ternary Search
+Sparse Table
+Binary Lifting
+Lowest Common Ancestor
+Euler Tour
+Shoe Lace Formula
+Modular Exponentiation
+Matrix Exponentiation
+GCD/LCM
+Mo's algorithm
+Order Statistic Tree
+Bipartite Matching
+Hungarian Algorithm
+Sweep Line
+Pollard-Rho
+Kasai's Algorithm
+Kadane'Algorithm
+Miller-Rabin Primality
+Manacher's Algorithm
+Fast Fourier Transform
+Johnson's Algorithm
+Articulation Points/Bridges
+Quicksort/Mergesort
+PriorityQueues/Heap Sort
+Balanced Binary Search Tree
+Euler's Totient Function
+Modular Multiplicative Inverse
+Chinese Remainder Theorem
+Link Cut Tree
+Graham Scan
+Hopcroft-Karp
+K-D tree
+Treap
+Quick Selection
+LCP
+Euler and Hamiltonian Path
+Cycel Finding
+Meet in the Middle
+Square Root Decomposition
+Branch and Bound
+Burnside Lemma
+Coordinate Compression
+Bloom Filter
+Tutte Matrix
+Edmond's Algorithm
+Back Tracking
+Expected Value
+Combinatorics
+Dynamic Connectivity
+Splay Tree
+Huffman Tree
+Radix Tree
+Dancing Links
+Dynamic Suffix Arrays
+Dynamic Connectivity
+Sliding Window
+LinkedList
+ArrayList
+Queue
+Stack
+Deque
+HashMap
