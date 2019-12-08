@@ -5,22 +5,34 @@ Z Algorithm
 Knuth-Morris-Pratt
 Rabin Karp
 Segment Tree
--Merge Sort Tree
--Persistent Segment Tree
--Lazy Propagation
+Merge Sort Tree
+Persistent Segment Tree
+Lazy Propagation
 Binary Indexed Tree/Fenwick Tree
 Trie
-Shortest Path
--Bellman-Ford
--Floyd-Warshall
--SPFA
--Dijkstra
+Bellman-Ford
+Floyd-Warshall
+SPFA
+Dijkstra
+D´Esopo-Pape algorithm
+Kirchhoff Theorem For Spanning Trees
 Dynamic Programming
 -Bitmask
 -Broken Profile/Frontier
 -Digit DP
 -Convex Hull Trick
 -Common: LCS, LIS, Min Edit Distance, Min Partition, Subset-sum, knapsack
+Greedy
+Divide And Conquer
+Lyndon Factorization
+Inclusion-Exclusion
+Stars and Bars
+Simpson Integration
+Li Chao Tree
+Delaunay triangulation
+Voronoi Diagram
+Prufer Code
+Farach-Colton and Bender algorithm
 Biconnected Components
 Strongly Connected Components
 Guassian Elimination
@@ -36,6 +48,7 @@ Max Flow
 -Edmonds-Karp
 -Dinic
 -Push Relabel
+-MPM
 Convex Hull
 Catalan
 Disjoin Set Union
@@ -97,9 +110,21 @@ Radix Tree
 Dancing Links
 Dynamic Suffix Arrays
 Dynamic Connectivity
+Gray Code
+Balanced Ternary
+Discrete Log
+Discrete Root
+Primitive Root
+Montgomery Multiplication
+Linear Diophantine Equations
+Square Root Tree
 Sliding Window
 Randomized Algorithm
 Birthday Paradox
+2-SAT
+Sprague-Grundy
+Game Theory, NIM
+Stern-Brocot tree and Farey sequences
 LinkedList
 ArrayList
 Queue
