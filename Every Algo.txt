@@ -98,6 +98,8 @@ Dancing Links
 Dynamic Suffix Arrays
 Dynamic Connectivity
 Sliding Window
+Randomized Algorithm
+Birthday Paradox
 LinkedList
 ArrayList
 Queue
