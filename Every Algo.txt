@@ -78,7 +78,7 @@ Treap
 Quick Selection
 LCP
 Euler and Hamiltonian Path
-Cycel Finding
+Cycle Finding
 Meet in the Middle
 Square Root Decomposition
 Branch and Bound
