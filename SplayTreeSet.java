@@ -2,18 +2,18 @@ import java.util.ArrayList;
 
 public class SplayTest {
     public static void main(String[] args) {
-        SplayTree<Integer> set = new SplayTree<>();
-        set.insert(3);
-        set.insert(1);
-        set.insert(8);
+        SplayTreeSet<Integer> set = new SplayTreeSet<>();
+        set.add(3);
+        set.add(1);
+        set.add(8);
         System.out.println(set);
     }
 
-    static class SplayTree<T extends Comparable<T>> {
+    static class SplayTreeSet<T extends Comparable<T>> {
         Node<T> base;
         int size;
 
-        public SplayTree() {
+        public SplayTreeSet() {
             base = null;
             size = 0;
         }
@@ -31,6 +31,42 @@ public class SplayTest {
                 curr.add((T) root.key);
                 traverse(root.right, curr);
             }
+        }
+
+        public boolean isEmpty() {
+            return size == 0;
+        }
+
+        public T first() {
+            return first(base);
+        }
+
+        public T first(Node root) {
+            if(root == null) return null;
+            if(root.left == null) return (T) (root.key);
+            return first(root.left);
+        }
+
+        public T pollFirst() {
+            T f = first();
+            remove(f);
+            return f;
+        }
+
+        public T last() {
+            return last(base);
+        }
+
+        public T last(Node root) {
+            if(root == null) return null;
+            if(root.right == null) return (T) (root.key);
+            return first(root.right);
+        }
+
+        public T pollLast() {
+            T l = last();
+            remove(l);
+            return l;
         }
 
         public Node rotateRight(Node curr) {
@@ -80,11 +116,11 @@ public class SplayTest {
             }
         }
 
-        public Node insert(T key) {
-            return base = insert(base, key);
+        public Node add(T key) {
+            return base = add(base, key);
         }
 
-        public Node insert(Node root, T key) {
+        public Node add(Node root, T key) {
             if(root == null)
             {
                 size++;
@@ -107,11 +143,11 @@ public class SplayTest {
             return newNode;
         }
 
-        public Node delete(T key) {
-            return base = delete(base, key);
+        public Node remove(T key) {
+            return base = remove(base, key);
         }
 
-        public Node delete(Node root, T key) {
+        public Node remove(Node root, T key) {
             if(root == null) return null;
             root = splay(root, key);
             if(root.key.compareTo(key) != 0) return root;
