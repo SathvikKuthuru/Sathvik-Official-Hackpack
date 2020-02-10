@@ -2,28 +2,33 @@ import java.util.ArrayList;
 
 public class SplayTest {
     public static void main(String[] args) {
-        SplayTree set = new SplayTree();
-        System.out.print(set);
+        SplayTree<Integer> set = new SplayTree<>();
+        set.insert(3);
+        set.insert(1);
+        set.insert(8);
+        System.out.println(set);
     }
 
-    static class SplayTree {
-        Node base;
+    static class SplayTree<T extends Comparable<T>> {
+        Node<T> base;
+        int size;
 
         public SplayTree() {
             base = null;
+            size = 0;
         }
 
         @Override
         public String toString() {
-            ArrayList<Integer> curr = new ArrayList<>();
+            ArrayList<T> curr = new ArrayList<>();
             traverse(base, curr);
             return curr.toString();
         }
 
-        public void traverse(Node root, ArrayList<Integer> curr) {
+        public void traverse(Node root, ArrayList<T> curr) {
             if(root != null) {
                 traverse(root.left, curr);
-                curr.add(root.key);
+                curr.add((T) root.key);
                 traverse(root.right, curr);
             }
         }
@@ -42,19 +47,20 @@ public class SplayTest {
             return y;
         }
 
-        public Node search(int key) {
-            return base = splay(base, key);
+        public boolean contains(T key) {
+            base = splay(base, key);
+            return base != null && base.key.equals(key);
         }
 
-        public Node splay(Node root, int key) {
-            if(root == null || root.key == key) return root;
-            if(root.key > key) {
+        public Node splay(Node root, T key) {
+            if(root == null || root.key.equals(key)) return root;
+            if(root.key.compareTo(key) > 0) {
                 if(root.left == null) return root;
-                if(root.left.key > key) {
+                if(root.left.key.compareTo(key) > 0) {
                     root.left.left = splay(root.left.left, key);
                     root = rotateRight(root);
                 }
-                else if(root.left.key < key) {
+                else if(root.left.key.compareTo(key) < 0) {
                     root.left.right = splay(root.left.right, key);
                     if(root.left.right != null) root.left = rotateLeft(root.left);
                 }
@@ -62,28 +68,33 @@ public class SplayTest {
             }
             else {
                 if(root.right == null) return root;
-                if(root.right.key > key) {
+                if(root.right.key.compareTo(key) > 0) {
                     root.right.left = splay(root.right.left, key);
                     if(root.right.left != null) root.right = rotateRight(root.right);
                 }
-                else if(root.right.key < key) {
+                else if(root.right.key.compareTo(key) < 0) {
                     root.right.right = splay(root.right.right, key);
-                    rotateLeft(root);
+                    root = rotateLeft(root);
                 }
                 return root.right == null ? root : rotateLeft(root);
             }
         }
 
-        public Node insert(int key) {
+        public Node insert(T key) {
             return base = insert(base, key);
         }
 
-        public Node insert(Node root, int key) {
-            if(root == null) return new Node(key);
+        public Node insert(Node root, T key) {
+            if(root == null)
+            {
+                size++;
+                return new Node(key);
+            }
             root = splay(root, key);
-            if(root.key == key) return root;
+            if(root.key.equals(key)) return root;
+            size++;
             Node newNode = new Node(key);
-            if(root.key > key) {
+            if(root.key.compareTo(key) > 0) {
                 newNode.right = root;
                 newNode.left = root.left;
                 root.left = null;
@@ -96,14 +107,15 @@ public class SplayTest {
             return newNode;
         }
 
-        public Node delete(int key) {
+        public Node delete(T key) {
             return base = delete(base, key);
         }
 
-        public Node delete(Node root, int key) {
+        public Node delete(Node root, T key) {
             if(root == null) return null;
             root = splay(root, key);
-            if(root.key != key) return root;
+            if(root.key.compareTo(key) != 0) return root;
+            size--;
             if(root.left == null) {
                 root = root.right;
             }
@@ -116,11 +128,11 @@ public class SplayTest {
         }
     }
 
-    static class Node {
-        int key;
+    static class Node<T extends Comparable<T>> {
+        T key;
         Node left, right;
 
-        public Node(int a) {
+        public Node(T a) {
             key = a;
             left = null;
             right = null;
