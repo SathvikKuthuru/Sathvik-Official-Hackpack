@@ -89,14 +89,17 @@ public class SplayTest {
         }
 
         public Node splay(Node root, T key) {
-            if(root == null || root.key.equals(key)) return root;
-            if(root.key.compareTo(key) > 0) {
+            if(root == null) return root;
+            int compare = root.key.compareTo(key);
+            if(compare == 0) return root;
+            else if(compare > 0) {
                 if(root.left == null) return root;
-                if(root.left.key.compareTo(key) > 0) {
+                int compareSub = root.left.key.compareTo(key);
+                if(compareSub > 0) {
                     root.left.left = splay(root.left.left, key);
                     root = rotateRight(root);
                 }
-                else if(root.left.key.compareTo(key) < 0) {
+                else if(compareSub < 0) {
                     root.left.right = splay(root.left.right, key);
                     if(root.left.right != null) root.left = rotateLeft(root.left);
                 }
@@ -104,11 +107,12 @@ public class SplayTest {
             }
             else {
                 if(root.right == null) return root;
-                if(root.right.key.compareTo(key) > 0) {
+                int compareSub = root.right.key.compareTo(key);
+                if(compareSub > 0) {
                     root.right.left = splay(root.right.left, key);
                     if(root.right.left != null) root.right = rotateRight(root.right);
                 }
-                else if(root.right.key.compareTo(key) < 0) {
+                else if(compareSub < 0) {
                     root.right.right = splay(root.right.right, key);
                     root = rotateLeft(root);
                 }
@@ -127,10 +131,11 @@ public class SplayTest {
                 return new Node(key);
             }
             root = splay(root, key);
-            if(root.key.equals(key)) return root;
+            int compare = root.key.compareTo(key);
+            if(compare == 0) return root;
             size++;
             Node newNode = new Node(key);
-            if(root.key.compareTo(key) > 0) {
+            if(compare > 0) {
                 newNode.right = root;
                 newNode.left = root.left;
                 root.left = null;
