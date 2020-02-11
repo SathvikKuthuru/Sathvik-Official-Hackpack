@@ -3,9 +3,18 @@ import java.util.ArrayList;
 public class SplayTest {
     public static void main(String[] args) {
         SplayTreeSet<Integer> set = new SplayTreeSet<>();
-        set.add(3);
         set.add(1);
+        set.add(100);
+        set.add(400);
+        set.add(20);
         set.add(8);
+        set.add(3);
+        set.add(15);
+        System.out.println(set.higher(8));
+        System.out.println(set.ceiling(8));
+        System.out.println(set.floor(9000));
+        System.out.println(set.lower(401));
+        System.out.println(set.lower(400));
         System.out.println(set);
     }
 
@@ -35,6 +44,48 @@ public class SplayTest {
 
         public boolean isEmpty() {
             return size == 0;
+        }
+
+        public T higher(T key) {
+            return higher(base, key, false);
+        }
+
+        public T higher(Node root, T key, boolean canEqual) {
+            if(root == null) return null;
+            int compare = root.key.compareTo(key);
+            if(canEqual && compare == 0) return (T) root.key;
+            else if(compare > 0) {
+                T possible = higher(root.left, key, canEqual);
+                return possible == null ? (T) root.key : possible;
+            }
+            else {
+                return higher(root.right, key, canEqual);
+            }
+        }
+
+        public T ceiling(T key) {
+            return higher(base, key, true);
+        }
+
+        public T lower(T key) {
+            return lower(base, key, false);
+        }
+
+        public T lower(Node root, T key, boolean canEqual) {
+            if(root == null) return null;
+            int compare = root.key.compareTo(key);
+            if(canEqual && compare == 0) return (T) root.key;
+            else if(compare < 0) {
+                T possible = lower(root.right, key, canEqual);
+                return possible == null ? (T) root.key : possible;
+            }
+            else {
+                return lower(root.left, key, canEqual);
+            }
+        }
+
+        public T floor(T key) {
+            return lower(base, key, true);
         }
 
         public T first() {
