@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class LCA {
-    static int n, m;
+    static int n;
     static ArrayList<Integer>[] adj;
     static int[][] parent;
     static int[] depth;
@@ -10,7 +10,6 @@ public class LCA {
     public static void main(String args[]) {
         Scanner scan = new Scanner(System.in);
         n = scan.nextInt();
-        m = scan.nextInt();
         adj = new ArrayList[n];
         depth = new int[n];
         parent = new int[n][LOG];
@@ -21,6 +20,8 @@ public class LCA {
             adj[a].add(b);
             adj[b].add(a);
         }
+        dfs(-1, 0, 0);
+        precompute();
     }
     
     static void dfs(int prev, int at, int curr) {
@@ -48,9 +49,9 @@ public class LCA {
             b = a;
             a = temp;
         }
-        int diff = depth[a] - depth[b];
+        int diff = depth[b] - depth[a];
         for(int i = 0; i < LOG; i++) {
-            if(diff && (1 << LOG) > 0) {
+            if((diff & (1 << i)) > 0) {
                 b = parent[b][i];
             } 
         }
