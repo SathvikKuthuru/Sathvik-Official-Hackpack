@@ -15,7 +15,8 @@ public class SplayTest {
         System.out.println(set.floor(9000));
         System.out.println(set.lower(401));
         System.out.println(set.lower(400));
-        System.out.println(set);
+        System.out.println("Testing Loop:");
+        for(int x : set.getIterable()) System.out.println(x);
     }
 
     static class SplayTreeSet<T extends Comparable<T>> {
@@ -29,17 +30,20 @@ public class SplayTest {
 
         @Override
         public String toString() {
-            ArrayList<T> curr = new ArrayList<>();
-            traverse(base, curr);
-            return curr.toString();
+            return getIterable().toString();
         }
 
-        public void traverse(Node root, ArrayList<T> curr) {
-            if(root != null) {
-                traverse(root.left, curr);
-                curr.add((T) root.key);
-                traverse(root.right, curr);
-            }
+        public ArrayList<T> getIterable() {
+            ArrayList<T> ret = new ArrayList<>();
+            traverse(ret, base);
+            return ret;
+        }
+
+        public void traverse(ArrayList<T> curr, Node root) {
+            if(root == null) return;
+            if(root.left != null) traverse(curr, root.left);
+            curr.add((T) root.key);
+            if(root.right != null) traverse(curr, root.right);
         }
 
         public boolean isEmpty() {
@@ -223,11 +227,13 @@ public class SplayTest {
     static class Node<T extends Comparable<T>> {
         T key;
         Node left, right;
+        Node nextNode;
 
         public Node(T a) {
             key = a;
             left = null;
             right = null;
+            nextNode = null;
         }
     }
 }
