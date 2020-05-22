@@ -30,21 +30,22 @@ public class A {
                 adj[a].add(ab);
                 adj[b].add(ba);
             }
+            out.println(fordFulkerson(0, 5));
         }
 
         boolean bfs(int s, int t, Edge[] parent) {
             boolean[] visited = new boolean[n];
-            ArrayDeque<Edge> queue = new ArrayDeque<>();
+            ArrayDeque<Integer> queue = new ArrayDeque<>();
             visited[s] = true;
             parent[s] = null;
-            queue.addLast(new Edge(-1, s, 0));
+            queue.addLast(0);
             while(!queue.isEmpty()) {
-                Edge q = queue.pollFirst();
-                for(Edge e : adj[q.to]) {
+                int q = queue.pollFirst();
+                for(Edge e : adj[q]) {
                     if(!visited[e.to] && e.flow > 0) {
-                        parent[e.to] = q;
+                        parent[e.to] = e;
                         visited[e.to] = true;
-                        queue.addLast(e);
+                        queue.addLast(e.to);
                     }
                 }
             }
