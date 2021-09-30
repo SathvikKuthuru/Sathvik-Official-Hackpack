@@ -22,6 +22,7 @@ typedef vector<pd> vpd;
 #define pb push_back
 #define lb lower_bound
 #define ub upper_bound
+#define all(x) x.begin(), x.end()
 
 int main() {
     cin.tie(0)->sync_with_stdio(0);
