@@ -15,7 +15,6 @@ typedef vector<pi> vpi;
 typedef vector<pl> vpl;
 typedef vector<pd> vpd;
 
-
 #define f first
 #define s second
 #define mp make_pair
@@ -24,8 +23,19 @@ typedef vector<pd> vpd;
 #define ub upper_bound
 #define all(x) x.begin(), x.end()
 
+void solve() {
+    
+}
+
 int main() {
     cin.tie(0)->sync_with_stdio(0);
+
+    int tc = 1;
+    cin >> tc;
+
+    for(int tt = 1; tt <= tc; tt++) {
+        solve();
+    }
 
     return 0;
 }
