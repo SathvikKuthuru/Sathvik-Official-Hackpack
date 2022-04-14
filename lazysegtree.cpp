@@ -6,16 +6,16 @@ struct V {
 };
 
 V t[4 * MAXN];
-int TYPE_ADD = 0, TYPE_QUERY = 1;
+int TYPE_MODIFY = 0, TYPE_QUERY = 1;
 
-void add(int v, ll x) {
+void modify(int v, ll x) {
     t[v].sum += x;
     t[v].lazy += x;
 }
 
 void push(int v) {
-    add(v * 2, t[v].lazy);
-    add(v * 2 + 1, t[v].lazy);
+    modify(v * 2, t[v].lazy);
+    modify(v * 2 + 1, t[v].lazy);
     t[v].lazy = 0;
 }
 
@@ -26,7 +26,7 @@ void pull(int v) {
 void rec(int v, int tl, int tr, int l, int r, int TYPE, ll&x) {
     if(r < tl || l > tr) return;
     if(l <= tl && tr <= r) {
-        if(TYPE == TYPE_ADD) add(v, x);
+        if(TYPE == TYPE_MODIFY) modify(v, x);
         else x = min(x, t[v].sum);
         return;
     }
