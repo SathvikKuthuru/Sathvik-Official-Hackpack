@@ -21,7 +21,9 @@ typedef vector<pd> vpd;
 #define pb push_back
 #define lb lower_bound
 #define ub upper_bound
-#define all(x) x.begin(), x.end()
+#define rep(i, a, b) for(int i = a; i < (b); ++i)
+#define all(x) begin(x), end(x)
+#define sz(x) (int)(x).size()
 
 void __print(int x) {cerr << x;}
 void __print(long x) {cerr << x;}
