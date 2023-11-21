@@ -15,6 +15,11 @@ typedef vector<pi> vpi;
 typedef vector<pl> vpl;
 typedef vector<pd> vpd;
 
+template<class T> bool ckmin(T& a, const T& b) { return b < a ? a = b, 1 : 0; }
+template<class T> bool ckmax(T& a, const T& b) { return a < b ? a = b, 1 : 0; }
+ 
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
 #define f first
 #define s second
 #define mp make_pair
