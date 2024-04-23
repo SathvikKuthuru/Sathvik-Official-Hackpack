@@ -29,7 +29,7 @@ void cent_decomp(int root) {
   int cent = dfs_cent(root, -1, sub[root]);
   // Do Stuff
   rem[cent] = true;
-  for(int x : adj[root]) {
+  for(int x : adj[cent]) {
     if(rem[x]) continue;
     cent_decomp(x);
   }
