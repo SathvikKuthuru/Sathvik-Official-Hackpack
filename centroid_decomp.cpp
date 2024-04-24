@@ -17,7 +17,7 @@ void dfs_sub(int at, int p) {
 int dfs_cent(int at, int p, int cnt) {
   for(int x : adj[at]) {
     if(x == p || rem[x]) continue;
-    if(sub[at] * 2 > cnt) {
+    if(sub[x] * 2 > cnt) {
       return dfs_cent(x, at, cnt);
     }
   }
