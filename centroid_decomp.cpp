@@ -3,7 +3,6 @@ const int MAXN = (int) (2e5 + 10);
 vi adj[MAXN];
 int sub[MAXN];
 bool rem[MAXN];
-int n, q;
 
 void dfs_sub(int at, int p) {
   sub[at] = 1;
